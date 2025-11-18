@@ -1,7 +1,7 @@
 # parameters
-ARG REPO_NAME="<REPO_NAME_HERE>"
-ARG DESCRIPTION="<DESCRIPTION_HERE>"
-ARG MAINTAINER="<YOUR_FULL_NAME> (<YOUR_EMAIL_ADDRESS>)"
+ARG REPO_NAME="Template Core"
+ARG DESCRIPTION="Duckie Race Project"
+ARG MAINTAINER="Yuvraj Puyam (ypuyam@purdue.edu)"
 # pick an icon from: https://fontawesome.com/v4.7.0/icons/
 ARG ICON="cube"
 
@@ -48,12 +48,12 @@ ENV DT_LAUNCH_PATH "${LAUNCH_PATH}"
 ENV DT_LAUNCHER "${LAUNCHER}"
 
 # install apt dependencies
-COPY ./dependencies-apt.txt "${REPO_PATH}/"
-RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
+# COPY ./dependencies-apt.txt "${REPO_PATH}/"
+# RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
 
-# install python3 dependencies
-COPY ./dependencies-py3.txt "${REPO_PATH}/"
-RUN dt-pip3-install ${REPO_PATH}/dependencies-py3.txt
+# # install python3 dependencies
+# COPY ./dependencies-py3.txt "${REPO_PATH}/"
+# RUN dt-pip3-install ${REPO_PATH}/dependencies-py3.txt
 
 # copy the source code
 COPY ./packages "${REPO_PATH}/packages"
