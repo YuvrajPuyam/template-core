@@ -83,3 +83,8 @@ LABEL org.duckietown.label.module.type="${REPO_NAME}" \
     org.duckietown.label.maintainer="${MAINTAINER}"
 # <== Do not change the code above this line
 # <==================================================
+# CMD to build:
+# dts devel build -H syre.local -f
+
+#  CMD to run:
+# dts devel run -H syre.local -L default
