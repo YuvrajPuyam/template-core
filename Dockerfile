@@ -1,5 +1,5 @@
 # parameters
-ARG REPO_NAME="Template Core"
+ARG REPO_NAME="template-core"
 ARG DESCRIPTION="Duckie Race Project"
 ARG MAINTAINER="Yuvraj Puyam (ypuyam@purdue.edu)"
 # pick an icon from: https://fontawesome.com/v4.7.0/icons/

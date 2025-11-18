@@ -1,0 +1,80 @@
+<launch>
+
+    <!-- Vehicle name -->
+    <arg name="veh" default="$(env VEHICLE_NAME)" />
+
+    <!-- ======================= -->
+    <!-- LOGGING FOR DEBUG       -->
+    <!-- ======================= -->
+    <node pkg="roslaunch" type="roslaunch" name="startup_log_1" output="screen">
+        <param name="msg" value="=== Starting lane-following pipeline ===" />
+    </node>
+
+    <!-- ======================= -->
+    <!-- CAMERA                  -->
+    <!-- ======================= -->
+    <include file="$(find duckietown)/launch/camera_node.launch">
+        <arg name="veh" value="$(arg veh)" />
+    </include>
+    <node pkg="roslaunch" type="roslaunch" name="startup_log_2" output="screen">
+        <param name="msg" value="[OK] camera_node launched" />
+    </node>
+
+    <!-- ======================= -->
+    <!-- ANTI INSTAGRAM          -->
+    <!-- ======================= -->
+    <include file="$(find duckietown)/launch/anti_instagram.launch">
+        <arg name="veh" value="$(arg veh)" />
+    </include>
+    <node pkg="roslaunch" type="roslaunch" name="startup_log_3" output="screen">
+        <param name="msg" value="[OK] anti_instagram launched" />
+    </node>
+
+    <!-- ======================= -->
+    <!-- LANE DETECTOR           -->
+    <!-- ======================= -->
+    <include file="$(find duckietown)/launch/lane_detector.launch">
+        <arg name="veh" value="$(arg veh)" />
+    </include>
+    <node pkg="roslaunch" type="roslaunch" name="startup_log_4" output="screen">
+        <param name="msg" value="[OK] lane_detector launched" />
+    </node>
+
+    <!-- ======================= -->
+    <!-- LANE CONTROLLER         -->
+    <!-- ======================= -->
+    <include file="$(find duckietown)/launch/lane_controller_node.launch">
+        <arg name="veh" value="$(arg veh)" />
+    </include>
+    <node pkg="roslaunch" type="roslaunch" name="startup_log_5" output="screen">
+        <param name="msg" value="[OK] lane_controller launched" />
+    </node>
+
+    <!-- ======================= -->
+    <!-- WHEELS DRIVER           -->
+    <!-- ======================= -->
+    <include file="$(find duckietown)/launch/wheels_driver.launch">
+        <arg name="veh" value="$(arg veh)" />
+    </include>
+    <node pkg="roslaunch" type="roslaunch" name="startup_log_6" output="screen">
+        <param name="msg" value="[OK] wheels_driver launched" />
+    </node>
+
+    <!-- ======================= -->
+    <!-- TRAFFIC LIGHT DETECTOR  -->
+    <!-- ======================= -->
+    <include file="$(find duckietown)/launch/traffic_light_detector_node.launch">
+        <arg name="veh" value="$(arg veh)" />
+    </include>
+    <node pkg="roslaunch" type="roslaunch" name="startup_log_7" output="screen">
+        <param name="msg" value="[OK] traffic_light_detector launched" />
+    </node>
+
+    <!-- ======================= -->
+    <!-- VEHICLE DETECTOR (optional) -->
+    <!-- ======================= -->
+    <include file="$(find duckietown)/launch/vehicle_detector_node.launch" if="$(env LAUNCH_VEHICLE_DETECTION)">
+        <arg name="veh" value="$(arg veh)" />
+    </include>
+
+</launch>
